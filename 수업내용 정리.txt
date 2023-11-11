@@ -1,0 +1,125 @@
+
+23.11.09
+01. pwd(print working directory) : 현재 작업 위치
+02. ls(list) : 파일 목록 표시
+03. cd(change directory) : 폴더 이동 (ex : cd man)
+	- 뒤에 설정 폴더 없을시 home 이동
+	- 이름 뒤에 '/'가 있으면 폴더 (ex : git_01_first/)
+04. mkdir(make directory) : 폴더 생성(ex : mkdir color)
+05. touch : 파일 생성(ex : touch red.txt)
+06. cat : 파일 내용 출력(ex : cat red.txt)
+07. vi(vim) : 파일 열기(ex : vi red.txt)
+  -내용 수정 순서
+             i 입력 - INSERT로변경(끼워넣기)
+             esc - menu로 변경
+             :w - write (저장)
+             :q - 나가기 -> wq동시사용가능(순서) 
+  -없는 파일도 입력하면 생성->열림
+08. rm(remove) : 파일 삭제 (ex : rm blue.txt)
+     rmdir(remove directory) : 비어 있는 폴더 삭제 (ex :rmdir moniter)
+     rm -rf(remove sub all) : 폴더포함 하위 목록 모두 삭제(ex : rm -rf book(not empty))
+    >-f : 쓰기 권한이 없는 파일이라고 아무 메세지 없이 강제 삭제 (내용이 비어있지 않을 때 강제 삭제)
+    >-r : 서브 디렉토리를 포함하여 디렉토리 안의 모든 내용 삭제
+    >-i : 파일마다 지울 것인지를 확인
+09. mv(move) : 같은 위치일 시 > 이름 변경 (ex : mv red.txt blue.txt>이름이 red에서 blue로 변경)
+                   다른 폴더 지정시 > 위치 변경 (ex : mv blue.txt book>폴더 지정시 그 폴더로 위치 변경)
+				>하위 폴더로 이동시 (ex : blue.txt ..)
+10. clear : 화면 출력 내용 지우기(화면 초기화)
+0. ls -a : 숨김 파일 표시, ls -l : 상세 내용, ls -al : 모든 상세내용 표시
+0. ./(../) : 숨김 파일
+0. .. : 상위로 이동
+0. unset : 설정된 내용 삭제(ex : name, email ...)
+
+
+
+
+-----Git & GitHub 흐름
+Woking Directory <-> Staging Area <-> Local Repository <-> my github <-> other github
+		>add		>commit		    >push	>pull request
+		<restore		<reset		    <pull(<---clone)<fork
+-----
+0. git config user.email
+0. git config user.name
+0. git init : 저장소 지정?> 깃으로 관리 가능 (master)
+0. git add : 
+0. git status : add 현재상태
+0. git commit -m '' : 메세지 (유니크 값 16진수)
+0. git log : commit 현재상태 / --oneline : 한줄보기 / --graph : 병합상태 확인
+0. git remote add (단어 ex : origin) (깃허브 주소)
+0. git push (origin) master : github에 저장
+0. Untracked files: >commit 안한상태
+0. git clone (깃허브주소)
+0. git pull (origin) master
+
+~pull clone차이점 (pull은 안맞는것만 가져옴 git 환경 필요함, clone 전체를 가져옴)
+~ -m 수정방법
+add commit push?
+
+23.11.10
+0. git reset --hard (유니크 7자리) : commit상태 취소
+	  ㄴ전단계 완전 삭제
+0. 브랜치(branch) : 특정 기준에서 줄기를 나누어 작업할 수있는 기능
+	- git branch 목록 확인
+	- git branch name 생성
+	- git switch name 브랜치 변경
+	- git branch -d name 브랜치 삭제
+
+0. 원격(remote) 병합
+	- kmh브랜치에서 list.txt 작성
+	- git add.
+	- git commit -m ' '
+	- git push origin kmh
+	- GitHub에서 Pull requests
+	- New pull request
+	- base : master <- comepare : kmh
+	- Create pull request
+	- 제목과 내용 입력
+	- Create pull request
+	-> 요청처리 완료
+	- Merge pull request
+	- Confirm merge
+	-> 승인처리 완료
+0. 로컬(local)병합
+	- kmh브랜치에서 .txt 작성
+	- git add .
+	- git commit -m ' '
+	- git switch master
+	- git merge kmh
+	- git push origin master
+
+0. Untracked files : 워킹 디렉토리에서 한 번도 관리한 적이 없는 새로운 파일
+0. 원격 branch 삭제
+	- code
+	- branches
+	- 해당 branch 삭제
+
+0. 다른 사람의 프로젝트를 수정하는 방법
+	- 의견제시 (충고)
+	- 직접수정 (첨삭)
+
+0. 의견제시
+	- Issues
+	- New issue
+	- 코멘트 작성
+	>오너 확인후 완료> Open 코멘트 Closed
+
+0. 직접수정
+	- Fork
+	- Create fork
+	- fork pull link
+	- 수정
+	- push github
+	- Pull requests
+	- New pull requests
+	- 보내기
+	- Resolving conflicts
+	- Merge pull request
+	- Confirm merge
+	-> 승인처리 완료
+
+0. README.md
+	-마크업을 이용한 작성
+
+0. gitignore 
+	- https://www.toptal.com/developers/gitignore
+	- https://www.toptal.com/developers/gitignore/api/windows,macos,visualstudiocode,eclipse,java,oracleforms
